@@ -1,10 +1,8 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class sever {
+public class severString {
     public static void main(String[] args) throws IOException {
         ServerSocket sersock = new ServerSocket(8888);
         /*while (true) {*/
@@ -12,20 +10,16 @@ public class sever {
             //System.out.println("服务端sock" + socket.getClass());
             InputStream inputStream = socket.getInputStream();
 
-
-            byte[] buffer = new byte[1000];
-            int readCount = 0;
-            while ((readCount = inputStream.read(buffer)) != -1) {
-                //byteArrayOutputStream.write(buffer, 0, readCount);
-                System.out.println(new String(buffer, 0, readCount));
-            }
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            String s = bufferedReader.readLine();
+            System.out.println(s);
 
             OutputStream outputStream = socket.getOutputStream();
             outputStream.write("hello client".getBytes());
             //socket.shutdownOutput();
 
             outputStream.close();
-            inputStream.close();
+            bufferedReader.close();
             socket.close();
         /*}*/
         //sersock.close();

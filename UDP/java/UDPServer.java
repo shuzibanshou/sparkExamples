@@ -19,7 +19,7 @@ public class UDPServer {
             answer = "《红楼梦》，《西游记》，《三国演义》，《水浒传》";
         }
 
-        datagramPacket = new DatagramPacket(answer.getBytes(), "hello,client".getBytes().length, InetAddress.getByName("127.0.0.1"), 8889);
+        datagramPacket = new DatagramPacket(answer.getBytes(), answer.getBytes().length, InetAddress.getByName("127.0.0.1"), 8889);
         socket.send(datagramPacket);
 
 

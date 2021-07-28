@@ -1,18 +1,18 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 
-public class client {
+public class clientString {
     public static void main(String[] args)  throws IOException{
 
         Socket sock = new Socket(InetAddress.getLocalHost(),8888);
         //System.out.println("客户端sock"+sock.getClass());
         OutputStream outputStream = sock.getOutputStream();
-        new BufferWriter(new OutputStreamWriter());
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
 
-        outputStream.write("hello server".getBytes());
+        bufferedWriter.write("hello server");
+        bufferedWriter.newLine();
+        bufferedWriter.flush();     //如果是字符流 此行必须
         sock.shutdownOutput();
         //
         InputStream inputStream = sock.getInputStream();
