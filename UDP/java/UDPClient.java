@@ -6,10 +6,11 @@ import java.net.InetAddress;
 public class UDPClient {
     public static void main(String[] args) throws IOException {
         DatagramSocket socket = new DatagramSocket(8889);
-        byte[] bytes = "hello,server".getBytes();
+        //发送
+        byte[] bytes = "四大名著".getBytes();
         DatagramPacket datagramPacket = new DatagramPacket(bytes, bytes.length, InetAddress.getByName("127.0.0.1"), 8888);
         socket.send(datagramPacket);
-
+        //接收
         byte[] bytes_unit = new byte[1024];
         datagramPacket = new DatagramPacket(bytes_unit, bytes_unit.length);
         socket.receive(datagramPacket);
