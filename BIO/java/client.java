@@ -14,11 +14,10 @@ public class client {
         sock.shutdownOutput();
         //
         InputStream inputStream = sock.getInputStream();
-        byte[] buffer = new byte[1000];  //准备一个瓢
+        byte[] buffer = new byte[1000];
         int readCount = 0;
 
         while ((readCount = inputStream.read(buffer)) != -1) {   //
-            //byteArrayOutputStream.write(buffer, 0, readCount);
             System.out.println(new String(buffer, 0, readCount));
         }
         outputStream.close();

@@ -13,17 +13,15 @@ public class sever {
             InputStream inputStream = socket.getInputStream();
             byte[] buffer = new byte[1000];  //准备一个瓢
             int readCount = 0;
+
             while ((readCount = inputStream.read(buffer)) != -1) {   //一直舀
                 //byteArrayOutputStream.write(buffer, 0, readCount);
                 System.out.println(new String(buffer, 0, readCount));
             }
 
-            //inputStream.close();
-            //
-
             OutputStream outputStream = socket.getOutputStream();
             outputStream.write("hello client".getBytes());
-            socket.shutdownOutput();
+            //socket.shutdownOutput();
 
             outputStream.close();
             inputStream.close();
